@@ -1,0 +1,10 @@
+package javaSE_Day_21;
+
+public class TestClassObject {
+
+	public static void main(String[] args) {
+		// 
+		System.out.println(String.class);	//自动调用toString()方法
+		
+	}
+}

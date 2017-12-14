@@ -1,0 +1,15 @@
+package util;
+
+import java.util.Date;
+
+public class TestDate {
+
+	public static void main(String[] args) {
+		Date now = new Date();		//获取当前日期
+		System.out.println(now);
+		for(int i=0; i<1000; i++) {
+			System.out.println(DateUtil.formatDate(now, "yyy-MM-dd HH:mm:ss:SS"));
+		}
+	}
+
+}

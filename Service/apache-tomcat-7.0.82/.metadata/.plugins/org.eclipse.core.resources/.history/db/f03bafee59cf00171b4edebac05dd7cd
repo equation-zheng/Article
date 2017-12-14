@@ -1,0 +1,10 @@
+package javaSE_Day_21;
+
+public class TestClassObject {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

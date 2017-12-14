@@ -1,0 +1,8 @@
+package util;
+
+public class DataBaseUtils {
+
+	private static String username;		//用户名
+	private static String password;		//密码
+	private static String dataBaseName;		//数据库名称
+}

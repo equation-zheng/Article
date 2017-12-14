@@ -1,0 +1,12 @@
+package test;
+
+public class TestProperties {
+
+	public static void main(String[] args) {
+
+		InputStream inputStream = TestProperties.class
+		
+
+	}
+
+}

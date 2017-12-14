@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+    String path = request.getContextPath(); //返回站点根目录
+	//System.out.println(path);
+    int port = request.getServerPort();	//得到的是服务器的配置文件中配置的端口号 比如 8080等等
+    String basePath  = null;
+    if (port == 80){
+        basePath = request.getScheme()+"://"+request.getServerName()+path;
+    } else {
+        basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+    }
+    request.setAttribute("basePath", basePath);
+%>

@@ -1,0 +1,61 @@
+
+/* login */
+.loginText {
+	position: absolute;
+	top: 300px;
+	left: 200px;
+	color: #fff;
+}
+
+.loginText p:nth-child(1) {
+	font-size: 50px;
+}
+
+.loginText p:nth-child(2) {
+	font-size: 41px;
+	margin: 20px 0 0 400px;
+}
+
+.content {
+	width: 450px;
+	height: 500px;
+	position: absolute;
+	right: 30px;
+	top: 300px;
+	background: #7FA9D5;
+}
+
+.content .title {
+	text-align: center;
+	color: #fff;
+	font-size: 40px;
+	line-height: 150px;
+}
+
+.content .inputBox {
+	margin: 40px 0;
+	text-align: center;
+}
+
+.content .inputBox input {
+	width: 80%;
+	height: 60px;
+	border-radius: 5px;
+	background: #BACFEA;
+	font-size: 21px;
+	border: none;
+}
+
+.content .loginBtn {
+	text-align: center;
+}
+
+.content .loginBtn button {
+	color: #fff;
+	text-align: center;
+	width: 80%;
+	height: 60px;
+	font-size: 20px;
+	background: #458FCE;
+	border: none;
+}

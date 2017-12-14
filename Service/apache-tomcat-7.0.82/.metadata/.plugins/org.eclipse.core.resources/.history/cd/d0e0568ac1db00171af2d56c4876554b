@@ -1,0 +1,17 @@
+package test;
+
+
+
+
+/*
+ * 读取Properties文件的测试类
+ * @author zfc
+ * */
+public class TestProperties {
+
+	public static void main(String[] args) {
+
+		
+	}
+
+}

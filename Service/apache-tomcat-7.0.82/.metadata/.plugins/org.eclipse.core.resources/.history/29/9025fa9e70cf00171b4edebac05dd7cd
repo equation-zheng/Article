@@ -1,0 +1,23 @@
+package javaSE_Day_21;
+
+import java.lang.reflect.Constructor;
+
+public class TestPerson {
+
+	private static Class[] ca = {String.class, int.class};
+	private static Object[] cs = {"dwajdah", 15};
+	
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+//		Person p = new Person();
+//		System.out.println(p);
+		
+		System.out.println(Class.forName("javaSE_Day_21.Person").newInstance());
+		
+//		System.out.println(Class.forName("javaSE_Day_21.Person").getConstructor(String.class, int.class));
+		Class c1 = Class.forName("javaSE_Day_21.Person");
+		Constructor cs1 = c1.getConstructor(ca);
+		System.out.println(cs1.newInstance(cs));
+	}
+
+}

@@ -1,0 +1,25 @@
+package test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class TestProperties {
+
+	public static void main(String[] args) {
+		
+		//获取TestProperties类对象  再获取该对象的类加载器  再返回读取指定资源的输入流
+		InputStream inputStream = TestProperties.class.getClassLoader().getResourceAsStream("jdbc.properties");
+		//new一个表示了一个持久的属性集Properties 可保存在流中或从流中加载对象
+		Properties p = new Properties();
+		try{
+			p.load(inputStream);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
