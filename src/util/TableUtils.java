@@ -49,9 +49,17 @@ public class TableUtils {
             }
         }
         
+        //删除生成sql语句  这个column.primaryKey() 为false情况下 的 逗号
+        Column column = (Column) fields[fields.length-1].getAnnotations()[0];
+        if(!column.primaryKey()){
+            sb.deleteCharAt(sb.length()-2);
+        }
+        
+        
         if(!StringUtils.isEmpty(primaryKey)){
             sb.append("\t").append(primaryKey);
         }
+        
         sb.append("\n) DEFAULT CHARSET =utf8");
         
         return sb.toString();

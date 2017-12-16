@@ -42,14 +42,10 @@ public class StringUtils {
 	     return sb.toString();
 	 }
 	    
-	/**
-	 * 将一个字符串的首字母改成大写
-	 * @param str
-	 * @return
-	 */
+	//将一个字符串的首字母改成大写
 	public static String upperCaseFirstCharacter(String str){
 	    StringBuilder sb = new StringBuilder();
-	    char[] arr = str.toCharArray();
+	    char[] arr = str.toCharArray();		//此字符串转换为一个新的字符数组
 	    for (int i = 0; i < arr.length; i++) {
 	        if(i == 0) sb.append((arr[i] + "").toUpperCase());
 	        else sb.append((arr[i]+""));

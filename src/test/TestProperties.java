@@ -24,13 +24,12 @@ public class TestProperties {
 	public static void main(String[] args) {
 		//获取本类的class对象.调用类加载器.返回指定资源的输入流
 		InputStream inputStream = TestProperties.class.getClassLoader().getResourceAsStream(path);
-		//一个持续属性集 可保存在流中或者从流中加载
+		//一个持续属性集    可保存在流中或者从流中加载
 		Properties p = new Properties();
 		try {
 			//从输入流中读取属性列表
 			p.load(inputStream);
 //			System.out.println(p);
-
 //			System.out.println(p.getProperty("db.username"));
 //			System.out.println(p.getProperty("db.password"));
 //			System.out.println(p.getProperty("db.dataBaseName"));
@@ -43,11 +42,11 @@ public class TestProperties {
 		Connection conn = DataBaseUtils.getConnection();
 //		System.out.println(conn);
 		
-		
-		String id = UUID.randomUUID() + "";
-		String createTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		DataBaseUtils.update("INSERT INTO t_user(id,username,password,male,create_time,is_delete,address,telephone) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", id,"小明",6000,0,createTime,0,"保密","保密");
+		//插入数据
+//		String id = UUID.randomUUID() + "";
+//		String createTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//		DataBaseUtils.update("INSERT INTO t_user(id,username,password,male,create_time,is_delete,address,telephone) "
+//			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", id,"王六",45654565,10,createTime,121,"天津","44575268");
 		
 		@SuppressWarnings("unused")
 		String sql = TableUtils.getCreateTableSQl(User.class);
@@ -61,7 +60,7 @@ public class TestProperties {
 		try {
 			DataBaseUtils.config("jdbc.properties");
 			@SuppressWarnings("unused")
-			Map<?, ?> map = DataBaseUtils.queryForMap("select * from t_user");
+			Map<?, ?> map = DataBaseUtils.queryForMap("select * from t_user where username = ?","小明");
 //			System.out.println(map);
 		} catch (SQLException e) {
 			e.printStackTrace();

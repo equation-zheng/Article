@@ -24,9 +24,16 @@ public class DataBaseUtils {
 	private static String password;
 	private static String dataBaseName;
 	
+	
+	//一调用该类的方法 就配置连接信息了
+	static {
+		config("jdbc.properties");
+	}
 	//配置数据库的基本信息
 	public static void config(String path) {
+		//表示字节输入流	超类										     返回该类的类加载器		返回读取指定资源的输入流							
 		InputStream inputStream = DataBaseUtils.class.getClassLoader().getResourceAsStream(path);	
+		//表示了一个持久的属性集Properties 可保存在流中或从流中加载
 		Properties p = new Properties();
 		try {
 			p.load(inputStream);
@@ -34,35 +41,36 @@ public class DataBaseUtils {
 			password = p.getProperty("db.password");
 			dataBaseName = p.getProperty("db.dataBaseName");
 		} catch (IOException e) {
-			
 			e.printStackTrace();
-			
 		}
 	}
 	
-	//一调用该类的方法 就配置连接信息了
-	static {
-		config("jdbc.properties");
-	}
-
 	//获取数据库链接
 	public static Connection getConnection(){
 	    Connection connection = null;
 	    try {
-	        Class.forName("com.mysql.jdbc.Driver");    //貌似没有用处    (有用的 会报500 自己挖坑找了半天错)-_-||
-	    	//通过DriverManager类的getConnection方法 试图建立到给定数据库URL的连接
-	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dataBaseName+"?"
-	        		+ "useUnicode=true&characterEncoding=utf8",username,password);
+	    	//首先加载一个驱动类,之后就可以取得 connection 了
+	        Class.forName("com.mysql.jdbc.Driver"); //貌似没有用处    (有用的 会报500 自己挖坑找了半天错)-_-||
+	    	
+	        //通过DriverManager类的getConnection方法 试图建立到给定数据库URL的连接
+	        String url = "jdbc:mysql://localhost:3306/"
+	    	+dataBaseName+
+	    	"?useUnicode=true&characterEncoding=utf8";
+	        connection = DriverManager.getConnection(url, username, password);
 	    } catch (ClassNotFoundException e) {
 	        e.printStackTrace();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
-	    return connection;
+	    return connection;		//数据库链接 com.mysql.jdbc.JDBC4Connection@2328c243
 	}
 	
+
+	
 	//关闭资源
-	public static void closeConnection(Connection connection, PreparedStatement statement, ResultSet rs) {
+	public static void closeConnection(Connection connection,
+									   PreparedStatement statement,
+									   ResultSet rs) {
 		try {
 			if (rs != null) rs.close();
 			if (statement != null) connection.close();
@@ -72,18 +80,21 @@ public class DataBaseUtils {
 		}
 	}
 	
+	
 	//DML操作
 	public static void update(String sql, Object...objects) {
-		Connection connection = getConnection();	//调用上面的方法 获取数据库连接
+		//调用上面的方法 获取数据库连接     com.mysql.jdbc.JDBC4Connection@2328c243
+		Connection connection = getConnection();
+		
+		//表示预编译的 SQL 语句的对象,SQL 语句被预编译并存储在 PreparedStatement 对象中
 		PreparedStatement statement = null;
+		
 		try {
 			statement = (PreparedStatement) connection.prepareStatement(sql);	//参数化SQL语句
-			
 			for (int i = 0; i < objects.length; i++) {
 				statement.setObject(i+1, objects[i]);	//使用给定对象设置 指定参数的值
 			}
-			statement.executeUpdate();
-			
+			statement.executeUpdate();		//在此 PreparedStatement 对象中执行 SQL 语句
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -93,26 +104,30 @@ public class DataBaseUtils {
 	
 	//查询出数据,并且 list 返回
 	public static List<Map<String, Object>> queryForList(String sql, Object...objects){
+		
 	    List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 	    Connection connection = getConnection();		//调用上面的方法 获取数据库连接
-	    PreparedStatement statement = null;			//用于存储预编译的SQL语句
+	    PreparedStatement statement = null;			//用于存储 预编译的SQL语句
 	    ResultSet rs = null;		//存储返回该查询生成的ResultSet对象
+	    
 	    try {
+	    	
 	        statement = connection.prepareStatement(sql);	//参数化SQL语句
 	        for (int i = 0; i < objects.length; i++) {
-	        	
 	            statement.setObject(i+1, objects[i]);	//给对象设定参数值
 	        }
 	        
 	        rs = statement.executeQuery();		//返回该查询生成的ResultSet对象
 	        //System.out.println(rs);
-	        while (rs.next()) {		//设置成  第一行成为当前行；第二次调用使第二行成为当前行
-	            ResultSetMetaData resultSetMetaData = rs.getMetaData();		//获取对象的列编号 类型 属性
+	        while (rs.next()) {			//设置成  第一行成为当前行；第二次调用使第二行成为当前行
+	            
+	        	ResultSetMetaData resultSetMetaData = rs.getMetaData();		//获取对象的列编号 类型 属性
 	            int count = resultSetMetaData.getColumnCount(); 	//获取列数
 	            Map<String, Object> map = new HashMap<String, Object>();
 	            for (int i = 0; i < count; i++) {
 	            	//给map插入 key 列  , values 列值
-	                map.put(resultSetMetaData.getColumnName(i+1), rs.getObject(resultSetMetaData.getColumnName(i+1)));
+	                map.put(resultSetMetaData.getColumnName(i+1),
+	                		rs.getObject(resultSetMetaData.getColumnName(i+1)));
 	            }
 	            //再把map放到ArrayList中
 	            result.add(map);
@@ -122,10 +137,9 @@ public class DataBaseUtils {
 	    }finally{
 	        closeConnection(connection, statement, rs);
 	    }
-	    
 	    return result;
 	}
-	
+		
 	//查询出数据,并且map返回
 	public static Map<String, Object> queryForMap(String sql, Object...objects) throws SQLException{
 	    Map<String, Object> result = new HashMap<String, Object>();
@@ -216,7 +230,7 @@ public class DataBaseUtils {
 	            /**如果报错，基本上是因为类型不匹配* */
 	        }
 	    }
-	    //System.out.println(obj);
+	    System.out.println(obj);
 	    return obj;
 	}
 }

@@ -16,7 +16,7 @@
 		<p>原来如此简单</p>
 	</div>
 	<div class="content">
-		<div class="title">用户登录</div>
+		<div class="title">用户注册</div>
 		<div class="inputBox">
 			<input id="username" type="search" placeholder=" 请输入账号/邮箱/手机号" value="小明">
 		</div>
