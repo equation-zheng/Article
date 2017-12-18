@@ -1,0 +1,54 @@
+.article .title {
+	text-align: center;
+	font-size: 28px;
+	color: #565353;
+	letter-spacing: 2px;
+	margin-top: 20px;
+}
+.article .light-font {
+	font-size: 14px;
+	color: 3666;
+}
+.article .info {
+	font-size: 14px;
+	color: 33c3a3a;
+}
+.article .content p {
+	text-indent 2em;
+	margin-boottom: 20px;
+	font-family: "Î¢ÈíÑÅºÚ";
+	line-height: 30px;
+	text-indent: 20px;
+}
+.article .right {
+	width: 30%;
+	height: 120px;
+	float: right;
+	text-align: right;
+}
+.article .right .author .header_pic {
+	position: relative;
+	top: 18px;
+	left: -16px;
+}
+.article .commentBox .comment_input {
+	width: 100%;
+	height: 70px;
+	padding: 9px;
+	border: solid 1px #d0d5d9;
+	box-shadow: inset 1px 1px 5px #ccc;
+}
+.article .commentBox .button {
+	width: 90px;
+	height: 28px;
+	line-height: 26px;
+	border: solid 1px #1e80c2;
+	background: #3498db;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	transition: all .3s ease;
+	float: right;
+	margin: 19px;
+	margin-right: -22px;
+}
