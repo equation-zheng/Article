@@ -75,20 +75,20 @@
     pageContext.setAttribute("articles2", articles2);
 	%>
 	<!-- ${articles2} -->
-	<div class='category'>
-	    <div class='title'>编程代码类</div>
-	    <ul class='items'>
+	<div class="category">
+	    <div class="title">编程代码类</div>
+	    <ul class="items">
 	        <c:forEach items="${articles2}" var="item">
-            <li class='item'>
-                <div class='item_banner'>
-                    <div class='item_header'>${item.header}</div>
-                    <div class='item_name'>${item.name}</div>
-                    <div class='item_author'>@${item.author} 著</div>
+            <li class="item" onclick="detail('${item.id}');">
+                <div class="item_banner">
+                    <div class="item_header">${item.header}</div>
+                    <div class="item_name" title="${item.name}">${item.name}</div>
+                    <div class="item_author">@${item.author} 著</div>
                 </div>
-                <div class='item_description'>${item.description}</div>
+                <div class="item_description">${item.description}</div>
             </li>
         </c:forEach>
-         <div style='clear:both'></div>
+         <div style="clear:both"></div>
 	    </ul>
 	</div>
 </div>
