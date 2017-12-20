@@ -230,7 +230,7 @@ public class DataBaseUtils {
 	            /**如果报错，基本上是因为类型不匹配* */
 	        }
 	    }
-	    System.out.println(obj);
+//	    System.out.println(obj);
 	    return obj;
 	}
 }
