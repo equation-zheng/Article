@@ -3,12 +3,18 @@
 <%@include file="common/taglib.jsp"%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page language="java" import="service.ArticleService"%>
+<%@ page language="java" import="service.CommentService"%>
 <% ArticleService articleService = new ArticleService(); %>
+<% CommentService commentService = new CommentService(); %>
 <%
 	String id = request.getParameter("id");
-	//System.out.println(id);
+	System.out.println(id);
 	Map<String,Object> map = articleService.getContentByArticleId(id);
     pageContext.setAttribute("article", map);
+    
+    List<Map<String,Object>> list = commentService.getCommentsByArticleId(id);
+    pageContext.setAttribute("comments", list);
+    System.out.println(list);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,16 +54,18 @@
 	</div>
 	<br/><hr/>
 	<div class="comment_list">
+		<c:forEach items="${comments}" var = "comment">
 		<div class="comment_infor clearfix">
 			<div style="border-bottom: solid 1px #ccc" class="comment_word">
 				<p style="border-bottom: solid 20px #fff">
-					${comment.username}dwedewffrg 说:
+					${comment.username}说:
 				</p>
 				<p>
-					内容不错,感想分享!
+					${comment.content}
 				</p>
 			</div>
 		</div>
+		</c:forEach>
 	</div>
 </div>
 </body>
@@ -65,10 +73,13 @@
 <script>
 	$(".button").eq(0).on("click", function() {
 		var txt = $("#commenttxt").val();
-		$.post("${basePath}/controller/CommentController.jsp", {txt : txt}, function(data) {
+		$.post("${basePath}/controller/CommentController.jsp", {txt : txt, articleId : "${article.id}"},
+				function(data) {
 			data = data.trim();
-			if(data == "-1") {
-				alert("请先登录!");
+			if(data == "-1") alert("请先登录!");
+			if(data == "1") {
+				alert("保存成功!");
+				location.reload();
 			}
 		});
 	});

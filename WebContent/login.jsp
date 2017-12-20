@@ -31,8 +31,8 @@
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
 	function login() {
-		var username = $('#username').val();
-		var password = $('#password').val();
+		var username = $("#username").val();
+		var password = $("#password").val();
 		$.ajax({
 			type : "post",  //请求方式
 			url : "${basePath}/controller/loginController.jsp",  //请求地址

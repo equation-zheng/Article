@@ -23,11 +23,8 @@ public class ArticleService {
 	}
 	
 	//通过文章id获取文章内容
-	public Map<String, Object> getContentByArticleId(String id) {
-		
-		String sql = "select content from t_article a inner join t_category"
-				+ " b on a.category_id = b.category_id where a.id = ?";
-		
-		return DataBaseUtils.queryForList(sql, id).get(0);
+	public Map<String,Object> getContentByArticleId(String id){
+	    String sql = "select * from t_article a inner join t_category b on a.category_id = b.category_id where a.id = ?";
+	    return DataBaseUtils.queryForList(sql,id).get(0);
 	}
 }

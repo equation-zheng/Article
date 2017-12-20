@@ -21,8 +21,8 @@ public class TestDetail {
 //		System.out.println(DataBaseUtils.queryForList("select a.content from t_comment a left JOIN t_user b "
 //		        + "on a.user_id = b.id where a.article_id = 'fb6b70ea-4023-45a3-9106-561649803805'")); 
 		
-//		CommentService cs = new CommentService();
-//		System.out.println(cs.getCommentsByArticleId("fb6b70ea-4023-45a3-9106-561649803805"));
+		CommentService cs = new CommentService();
+		System.out.println(cs.getCommentsByArticleId("fb6b70ea-4023-45a3-9106-561649803805"));
 		
 	}
 }
