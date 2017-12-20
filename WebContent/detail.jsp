@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="common/taglib.jsp"%>
-
+<%@ page language="java" import="java.util.*"%>
+<%@ page language="java" import="service.ArticleService"%>
+<% ArticleService articleService = new ArticleService(); %>
 <%
 	String id = request.getParameter("id");
-	System.out.println(id);
+	//System.out.println(id);
+	Map<String,Object> map = articleService.getContentByArticleId(id);
+    pageContext.setAttribute("article", map);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,44 +21,18 @@
 </head>
 <body>
 <div class="article">
-	<div class="title">文章标题</div>
+	<div class="title">${article.name}</div>
 	<div class="category">
 		<span class="light-font">分类:</span>
-		<span class="info">编程代码类</span>
+		<span class="info">${article.category_name}</span>
 	</div>
 	<div class="publicDate">
 		<span class="light-font">发布时间:</span>
-		<span class="info">2016-10-27</span>
+		<span class="info">${article.create_time}</span>
 	</div>
 	<hr/>
 	<div class="content">
-		<p>初学javascript的人，都会接触到一个东西叫做闭包，听起来感觉很高大上的。网上也有各种五花八门的解释，其实我个人感觉，没必要用太理论化的观念来看待闭包。
-
-        <p>事实上，你每天都在用闭包，只是你不知道罢了。
-        
-        <p>比如：
-        
-        var cheese = '奶酪';
-        
-        var test = function(){
-            alert(cheese);
-        }
-        OK，你已经写了一个闭包。
-        
-        <p>函数也是一个数据类型</p>
-        <p>变量 cheese 是在全局作用域中的一个变量，当你创建了一个 test 函数，那么，test 和 cheese 就共享一个全局作用域。</p>
-        
-        <p>你要额外明白的一点是，在js中，函数和变量本质上是一个东西。函数也是一个数据类型。</p>
-        
-        <p>从上面的定义中也能看出来这一点。你要是不相信的话，我们来看一下咯。</p>
-        
-        <p>alert(cheese);</p>
-        <p>alert(test);</p>
-        
-        <p>Paste_Image.png</p>
-        
-        <p>Paste_Image.png</p>
-        <p>让我们再来看看 test 和 cheese各是什么类型：</p>
+		${article.content}
 	</div>
 	<div class="right">
 	    <div class="author">
@@ -83,4 +61,16 @@
 	</div>
 </div>
 </body>
+<script src="${basePath}/static/js/jQuery.js"></script>
+<script>
+	$(".button").eq(0).on("click", function() {
+		var txt = $("#commenttxt").val();
+		$.post("${basePath}/controller/CommentController.jsp", {txt : txt}, function(data) {
+			data = data.trim();
+			if(data == "-1") {
+				alert("请先登录!");
+			}
+		});
+	});
+</script>
 </html>

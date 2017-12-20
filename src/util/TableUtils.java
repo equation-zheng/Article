@@ -50,10 +50,11 @@ public class TableUtils {
         }
         
         //删除生成sql语句  这个column.primaryKey() 为false情况下 的 逗号
-        Column column = (Column) fields[fields.length-1].getAnnotations()[0];
-        if(!column.primaryKey()){
-            sb.deleteCharAt(sb.length()-2);
-        }
+//        Column column = (Column) fields[fields.length-1].getAnnotations()[0];
+//        if(!column.primaryKey()){
+//            sb.deleteCharAt(sb.length()-2);
+//            System.out.println("delete");
+//        }
         
         
         if(!StringUtils.isEmpty(primaryKey)){
