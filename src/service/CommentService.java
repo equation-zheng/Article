@@ -23,7 +23,6 @@ public class CommentService {
 	 * 根据文章id查询它的所有评论
 	 */
 	public List<Map<String,Object>> getCommentsByArticleId(String id){
-	    return DataBaseUtils.queryForList("select b.username ,a.content from t_comment a left JOIN t_user b " +
-	             "on a.user_id = b.id  where a.article_id = ?", id);
+	    return DataBaseUtils.queryForList("select b.username ,a.content,a.update_time from t_comment a left JOIN t_user b on a.user_id = b.id  where a.article_id = ?", id);
 	}
 }

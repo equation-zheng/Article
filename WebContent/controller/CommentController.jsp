@@ -2,9 +2,9 @@
 <%@page import="bean.Comment"%>
 <%@page import="service.CommentService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
+<%	
     User user = (User)session.getAttribute("user");
-    if(user==null) {//代表用户没有登陆
+    if(user == null) {//代表用户没有登陆
         out.print("-1");
         return;
     }
@@ -19,4 +19,5 @@
     comment.setContent(txt);
     commentService.saveComment(comment);   
     out.print("1");
+    System.out.println(user);
 %>

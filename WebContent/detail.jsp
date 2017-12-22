@@ -8,13 +8,13 @@
 <% CommentService commentService = new CommentService(); %>
 <%
 	String id = request.getParameter("id");
-	System.out.println(id);
+	//System.out.println(id);
 	Map<String,Object> map = articleService.getContentByArticleId(id);
     pageContext.setAttribute("article", map);
     
     List<Map<String,Object>> list = commentService.getCommentsByArticleId(id);
     pageContext.setAttribute("comments", list);
-    System.out.println(list);
+    //System.out.println(list);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,7 +34,7 @@
 	</div>
 	<div class="publicDate">
 		<span class="light-font">发布时间:</span>
-		<span class="info">${article.create_time}</span>
+		<span class="info">${article.create_time.toLocaleString()}</span>
 	</div>
 	<hr/>
 	<div class="content">
@@ -53,16 +53,12 @@
 		<input type="button" value="保存评论" class="button">
 	</div>
 	<br/><hr/>
-	<div class="comment_list">
+	<div>
 		<c:forEach items="${comments}" var = "comment">
-		<div class="comment_infor clearfix">
+		<div>
 			<div style="border-bottom: solid 1px #ccc" class="comment_word">
-				<p style="border-bottom: solid 20px #fff">
-					${comment.username}说:
-				</p>
-				<p>
-					${comment.content}
-				</p>
+				<p>${comment.update_time.toLocaleString()} ${comment.username}:</p>
+				<p>${comment.content}</p>
 			</div>
 		</div>
 		</c:forEach>
@@ -77,7 +73,8 @@
 				function(data) {
 			data = data.trim();
 			if(data == "-1") alert("请先登录!");
-			if(data == "1") {
+			else if(data == "1" && txt.length == 0) alert("评论不能为空!");
+			else if(data == "1" && txt.length >= 1) {
 				alert("保存成功!");
 				location.reload();
 			}

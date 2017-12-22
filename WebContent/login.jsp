@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/index.css">
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/login.css">
-<title>登陆/注册</title>
+<title></title>
 </head>
 <body style="background: #96B6D2">
 	<%@include file="common/header.jsp"%>

@@ -71,7 +71,7 @@
 	</div>
 	<%
     //查询出编程代码类的相关文章
-    List<Map<String,Object>>  articles2 = articleService.getArticlesByCategoryId(2, 0, 6);
+    List<Map<String,Object>>  articles2 = articleService.getArticlesByCategoryId(2, 0, 7);
     pageContext.setAttribute("articles2", articles2);
 	%>
 	<!-- ${articles2} -->
