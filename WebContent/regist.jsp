@@ -11,7 +11,7 @@
 
 <title>登陆/注册</title>
 </head>
-<body style="background: #96B6D2">
+<body id="bodyImg">
 
 	<%@include file="common/header.jsp"%>
 <div class="warp">
@@ -52,6 +52,22 @@
 </body>
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
+
+var bodyImg = $("#bodyImg").eq(0);
+var myDate = new Date();
+var h = myDate.getHours();
+if(h >= 6 && h <= 11) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/morning.jpg)");
+}else if(h >= 12 && h <= 15) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/noon.jpg)");
+}else if(h >= 16 && h <= 18) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/evening.jpg)");
+}else{
+	bodyImg.css("background-image", "url(${basePath}/static/image/at_night.jpg)");
+}
+
+
+
 var sex = null;
 var radio = $("#radio input").eq(0);
 var radios = $("#radio input").eq(1);

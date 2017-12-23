@@ -21,36 +21,35 @@
 	<div class="content">
 		<i class="leftBtn"></i>
 		<i class="rightBtn"></i>
-
 		<ul>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="5" />
+					<img src="${basePath}/static/image/morning.jpg" alt="5" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="1" />
+					<img src="${basePath}/static/image/noon.jpg" alt="1" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="2" />
+					<img src="${basePath}/static/image/evening.jpg" alt="2" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="3" />
+					<img src="${basePath}/static/image/at_night.jpg" alt="3" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="4" />
+					<img src="${basePath}/static/image/noon.jpg" alt="4" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/.png" alt="5" />
+					<img src="${basePath}/static/image/morning.jpg" alt="5" />
 				</a>
 			</li>
 		</ul>

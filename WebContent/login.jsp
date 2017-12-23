@@ -13,10 +13,8 @@
 
 <title></title>
 </head>
-<body style="background: #96B6D2">
-
+<body id="bodyImg">
 	<%@include file="common/header.jsp"%>
-	
 	<div class="loginText">
 		<p>写出动人的故事</p>
 		<p>原来如此简单</p>
@@ -36,6 +34,19 @@
 </body>
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
+	var bodyImg = $("#bodyImg").eq(0);
+	var myDate = new Date();
+	var h = myDate.getHours();
+	if(h >= 6 && h <= 11) {
+		bodyImg.css("background-image", "url(${basePath}/static/image/morning.jpg)");
+	}else if(h >= 12 && h <= 15) {
+		bodyImg.css("background-image", "url(${basePath}/static/image/noon.jpg)");
+	}else if(h >= 16 && h <= 18) {
+		bodyImg.css("background-image", "url(${basePath}/static/image/evening.jpg)");
+	}else{
+		bodyImg.css("background-image", "url(${basePath}/static/image/at_night.jpg)");
+	}
+
 	function login() {
 		var username = $("#username").val();
 		var password = $("#password").val();
