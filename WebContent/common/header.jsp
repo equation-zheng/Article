@@ -1,17 +1,24 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<div class="header">
-	    <div class='logo'>原创文字</div>
-	    <ul>
-	        <li class='first'><a href="index.jsp">首页</a></li>
-	        <li class='item'><a href="javascript:void(0)">原创故事</a></li>
-	        <li  class='item'><a href="javascript:void(0)">热门专题</a></li>
-	        <li  class='item'><a href="javascript:void(0)">欣赏美文</a></li>
-	        <li  class='item'><a href="javascript:void(0)">赞助</a></li>
-	    </ul>
-	    
-	    <div class='login'>
+<div class="header">
+	<div class="headerin">
+	    <div class="logo">原创文字</div>
+		    <c:choose>
+	    		<c:when test="${empty sessionScope.username}">
+				    
+	    		</c:when>
+	    		<c:otherwise>
+	    			<ul>
+				        <li class="first"><a href="index.jsp">首页</a></li>
+				        <li class="item"><a href="javascript:void(0)">原创故事</a></li>
+				        <li  class="item"><a href="javascript:void(0)">热门专题</a></li>
+				        <li  class="item"><a href="javascript:void(0)">欣赏美文</a></li>
+				        <li  class="item"><a href="javascript:void(0)">赞助</a></li>
+				    </ul>
+	    		</c:otherwise>
+		    </c:choose>
+	    <div class="login">
 	    	<c:choose>
 	    		<c:when test="${empty sessionScope.username}">
 	    			<span><a href="login.jsp">登陆</a></span>
@@ -26,3 +33,4 @@
 	    	</c:choose>
 	    </div>
 	</div>
+</div>

@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.warp{
+	width: 100%;
+	max-width: 1140px;
+    min-width: 755px;
+    position: relative;
+    margin: 0 auto;
+}
+.loginText {
+	position: absolute;
+	top: 210px;
+	left: 50px;
+	color: #fff;
+}
+
+.loginText p:first-child {
+	font-size: 35px;
+}
+
+.loginText p:last-child {
+	font-size: 30px;
+	margin: 20px 0 0 200px;
+}	
+
+.content {
+	width: 60%;
+	position: absolute;
+	right: 20px;
+	top: 100px;
+	background: #7FA9D5;
+	padding: 40px;
+}
+
+.content .title {
+	text-align: center;
+	color: #fff;
+	font-size: 30px;
+	line-height: 100px;
+}
+
+.content .inputBox {
+	margin: 40px 0;
+	text-align: center;
+}
+.content .inputBox span,
+.content .inputBoxRadio span{
+	display: inline-block;
+	width: 70px;
+	text-align: center;
+}
+.content .inputBox input {
+	width: 500px;
+	height: 60px;
+	margin: 0 21px;
+	border-radius: 5px;
+	background: #BACFEA;
+	font-size: 21px;
+	border: none;
+}
+.content .inputBoxRadio .radio {
+	width: 500px;
+	margin: 0 21px;
+	text-align: left;
+	display: inline-block;
+}
+.content .inputBoxRadio input {
+	width: 50px;
+	height: 30px;
+	vertical-align:middle;
+	margin-top:-2px; 
+	margin-bottom:1px;"
+}
+
+.content .loginBtn {
+	text-align: center;
+}
+
+.content .loginBtn button {
+	color: #fff;
+	text-align: center;
+	width: 80%;
+	height: 60px;
+	font-size: 20px;
+	background: #458FCE;
+	border: none;
+}

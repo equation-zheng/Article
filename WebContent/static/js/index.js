@@ -2,7 +2,7 @@ var leftBtn = $(".leftBtn").eq(0);
 var rightBtn = $(".rightBtn").eq(0);
 var time = null;
 
-rightBtn.on('click', function() {
+rightBtn.on("click", function() {
     clearTimeout(time);
     time = setTimeout(function() {
         index++;
@@ -11,7 +11,7 @@ rightBtn.on('click', function() {
     },500);
 });
 
-leftBtn.on('click', function() {
+leftBtn.on("click", function() {
     clearTimeout(time);
     time = setTimeout(function() {
         index--;

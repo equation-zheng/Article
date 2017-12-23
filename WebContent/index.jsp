@@ -7,11 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="${basePath}/static/css/header.css">
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/index.css">
+
 <title>首页</title>
 </head>
 <body>
+
 <%@include file="common/header.jsp" %>
+
 <div class="banner">
 	<div class="content">
 		<i class="leftBtn"></i>

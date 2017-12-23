@@ -1,0 +1,55 @@
+*{
+    padding: 0 ;
+    margin: 0 ;
+    font-family: "Î¢ÈíÑÅºÚ" ;
+}
+.header {
+    height: 50px ;
+    background: #458fce ;
+}
+.header .headerin {
+	width: 100%;
+	max-width: 1140px;
+    min-width: 755px;
+	margin: 0 auto;
+}
+.header .logo {
+    color: #fff ;
+    line-height: 50px ;
+    font-size: 30px ;
+    margin-left: 20px ;
+    display:inline-block ;
+    font-weight:500 ;
+    float : left;
+}
+.header ul li.first {
+    margin-left: 30px ;
+}
+
+.header ul li {
+    float: left ;
+    color: #fff ;
+    display: inline-block ;
+    width: 112px ;
+    height: 50px ; 
+    text-align: center ;
+    line-height:50px ;
+    cursor: pointer ;
+}
+a {
+    color: #fff ;
+    text-decoration: none ;
+}
+.header ul li:hover {
+    background:#74b0e2 ;
+}
+.header ul li.first {
+	margin-left: 30px;
+	background: #74b0e2;
+}
+.header .login {
+	float: right;
+	color: #fff;
+	line-height: 50px;
+	margin-right: 20px;
+}
