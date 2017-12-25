@@ -37,7 +37,7 @@ function movePicture() {
             $(this).css('margin-left', -imgwidth * len);
             index = len - 1;
         }
-    })
+    });
 }
 window.onload(automove());
 
@@ -45,7 +45,7 @@ function automove() {
     time = setTimeout(function() {
     	movePicture(index++);
     	automove();
-    },6000);
+    },2000);
 }
 
 //打开详情页
@@ -56,4 +56,19 @@ function detail(id) {
 	a.target = "_new";	//	知道在新窗口打开
 	a.click();	//触发打开事件
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

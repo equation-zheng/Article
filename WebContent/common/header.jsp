@@ -6,15 +6,15 @@
 	    <div class="logo">原创文字</div>
 		    <c:choose>
 	    		<c:when test="${empty sessionScope.username}">
-				    
 	    		</c:when>
 	    		<c:otherwise>
 	    			<ul>
 				        <li class="first"><a href="index.jsp">首页</a></li>
 				        <li class="item"><a href="javascript:void(0)">原创故事</a></li>
-				        <li  class="item"><a href="javascript:void(0)">热门专题</a></li>
-				        <li  class="item"><a href="javascript:void(0)">欣赏美文</a></li>
-				        <li  class="item"><a href="javascript:void(0)">赞助</a></li>
+				        <li class="item"><a href="javascript:void(0)">热门专题</a></li>
+				        <li class="item"><a href="javascript:void(0)">欣赏美文</a></li>
+				        <li class="item"><a href="javascript:void(0)">赞助</a></li>
+				        <li class="item"><a href="edit.jsp">文章撰写</a></li>
 				    </ul>
 	    		</c:otherwise>
 		    </c:choose>

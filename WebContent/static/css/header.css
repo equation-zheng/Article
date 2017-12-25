@@ -5,7 +5,7 @@
 }
 .header {
     height: 50px ;
-    background: #458fce ;
+    background: rgba(12,63,106,.0);
 }
 .header .headerin {
 	width: 100%;

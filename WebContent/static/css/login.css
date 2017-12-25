@@ -1,8 +1,13 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: "Î¢ÈíÑÅºÚ" ;
 }
-
+#bodyImg {
+	background-repeat:no-repeat ;
+	background-size: cover;
+	background-attachment: fixed;
+}
 .loginText {
 	position: absolute;
 	top: 300px;
@@ -25,7 +30,8 @@
 	position: absolute;
 	right: 30px;
 	top: 300px;
-	background: #7FA9D5;
+	border-radius: 20px;
+	background: rgba(255,255,255,.2);
 }
 
 .content .title {
@@ -47,6 +53,7 @@
 	background: #BACFEA;
 	font-size: 21px;
 	border: none;
+	background: rgba(186,207,234,.5);
 }
 
 .content .loginBtn {
@@ -61,4 +68,6 @@
 	font-size: 20px;
 	background: #458FCE;
 	border: none;
+	border-radius: 5px;
+	background: rgba(69,143,206,.7);
 }

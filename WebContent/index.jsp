@@ -13,7 +13,7 @@
 
 <title>首页</title>
 </head>
-<body>
+<body id="bodyImg">
 
 <%@include file="common/header.jsp" %>
 
@@ -99,6 +99,21 @@
 </body>
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script src="${basePath}/static/js/index.js"></script>
+<script>
+//body背景
+var bodyImg = $("#bodyImg").eq(0);
+var myDate = new Date();
+var h = myDate.getHours();
+if(h >= 6 && h <= 11) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/morning.jpg)");
+}else if(h >= 12 && h <= 15) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/noon.jpg)");
+}else if(h >= 16 && h <= 18) {
+	bodyImg.css("background-image", "url(${basePath}/static/image/evening.jpg)");
+}else{
+	bodyImg.css("background-image", "url(${basePath}/static/image/at_night.jpg)");
+}
+</script>
 </html>
 
 

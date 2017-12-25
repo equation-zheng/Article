@@ -30,7 +30,7 @@ public class TestInsertOperation {
 		String update_time = "2017-12-15 16:43:10";
 		String userId = "319600c3-550a-4f9f-80cf-deebe2377858";
 		int categoryId = 2;
-		DataBaseUtils.update(sql, id,header,name,content,author,description,isPublished,isDelete,create_time,update_time,userId,categoryId);
+		DataBaseUtils.update(sql,id,header,name,content,author,description,isPublished,isDelete,create_time,update_time,userId,categoryId);
 		System.out.println("新增成功！");
 	}
 }

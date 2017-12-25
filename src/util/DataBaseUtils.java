@@ -24,7 +24,6 @@ public class DataBaseUtils {
 	private static String password;
 	private static String dataBaseName;
 	
-	
 	//一调用该类的方法 就配置连接信息了
 	static {
 		config("jdbc.properties");

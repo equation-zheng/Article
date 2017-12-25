@@ -1,5 +1,12 @@
 @CHARSET "UTF-8";
-
+*{
+	font-family: "微软雅黑" ;
+}
+#bodyImg {
+	background-repeat:no-repeat ;
+	background-size: cover;
+	background-attachment: fixed;
+}
 .banner	{
 	height: 380px;
 	background: #ccc;
