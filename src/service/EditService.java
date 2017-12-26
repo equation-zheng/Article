@@ -14,6 +14,8 @@ import bean.User;
 public class EditService {
 	
 	public List<Map<String,Object>> getArticleName(String userName) {
+		
+		System.out.println(userName);
 		String sql = "select id, header, name,"
 				+ "description from t_article where 1 = 1 "
 				+ " and is_delete = 0"

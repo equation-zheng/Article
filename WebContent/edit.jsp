@@ -37,7 +37,7 @@
 	</div>
 	<span class="light-font">封面小标题:</span>
 	<input class="titleInput" id="subtitle">
-	<span class="light-font">我的文章:</span>
+	<span>我的历史文章:</span>
     <label id="lblSelect">
         <select class="selectPointOfInterest" id="articleId">
 	        <c:forEach items="${comments}" var = "articleName">
@@ -47,8 +47,8 @@
     </label>
 	<br>
 	<span class="light-font">封面简介:</span>
-	<textarea class="subTxt" id="description"></textarea>
-	<button class="deleteButton" id="deleteButton">删除我的文章</button>
+	<textarea class="subTxt" id="description" placeholder="请小于50个字!!"></textarea>
+	<button class="deleteButton" id="deleteButton">删除某个历史文章</button>
 	<div class="author">
 	    	<img src="${basePath}/static/image/1.jpg" class="header_pic" width="90" height="90"></img>
 	   		 作者：${sessionScope.username}
@@ -108,7 +108,7 @@
 					alert("不能有一项为空!");
 				}else if(data == 1){
 					alert("文章发布成功!");
-					window.location.href = "${basePath}";	
+					window.location.href = "${basePath}/edit.jsp";	
 				};
 			}
 		});

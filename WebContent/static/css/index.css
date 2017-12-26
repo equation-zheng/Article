@@ -83,6 +83,7 @@
     margin: 20px;
     float: left;
     list-style: none;
+    overflow:hidden;
 }
 .category .items .item div {
     text-align: center;

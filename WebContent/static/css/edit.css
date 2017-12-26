@@ -2,7 +2,6 @@
 	font-family: "Î¢ÈíÑÅºÚ";
 }
 select.selectPointOfInterest{
-	width                    : 130pt;
 	height                   : 20pt;
 	line-height              : 20pt;
 	padding-right            : 20pt;
@@ -17,7 +16,7 @@ select.selectPointOfInterest{
 	-moz-appearance          : none;
 	appearance               : none;
 	font-family              : SimHei;
-	font-size                : 13pt;
+	font-size                : 12pt;
 	font-weight              : 500;
 	color                    : RGBA(102,102,102,0.7);
 	cursor                   : pointer;
@@ -93,7 +92,14 @@ label#lblSelect::after{
 	border: 0;
 	border-bottom: solid 1px #ccc;
 }
-
+.deleteButton {
+	border: dashed 1px red;
+    background: rosybrown;
+    color: #fff;
+    padding: 3px 5px;
+    margin-left: 123px;
+    border-radius: 5px;
+}
 
 
 
