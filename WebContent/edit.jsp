@@ -2,7 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@include file="common/taglib.jsp"%>
 <%@ page language="java" import="java.util.*"%>
-
+<%@ page language="java" import="service.EditService"%>
+<% EditService editService = new EditService();%>
+<%
+   String userName = session.getAttribute("username").toString();
+   List<Map<String,Object>> list = editService.getArticleName(userName);
+   //System.out.println(list+" "+userName);
+   pageContext.setAttribute("comments", list);
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,9 +24,8 @@
 		<span class="light-font">文章分类:</span>
         <label id="lblSelect">
             <select class="selectPointOfInterest" id="categoryId">
-                <option></option>
-                <option>连载类</option>
-                <option>编程代码类</option>
+                <option value="1">连载部分</option>
+                <option value="2">编程代码类</option>
             </select>
         </label>	
 		<span class="light-font">文章标题:</span>
@@ -31,9 +37,18 @@
 	</div>
 	<span class="light-font">封面小标题:</span>
 	<input class="titleInput" id="subtitle">
+	<span class="light-font">我的文章:</span>
+    <label id="lblSelect">
+        <select class="selectPointOfInterest" id="articleId">
+	        <c:forEach items="${comments}" var = "articleName">
+	            <option value="${articleName.id}">${articleName.name}</option>
+	        </c:forEach>
+        </select>
+    </label>
 	<br>
 	<span class="light-font">封面简介:</span>
 	<textarea class="subTxt" id="description"></textarea>
+	<button class="deleteButton" id="deleteButton">删除我的文章</button>
 	<div class="author">
 	    	<img src="${basePath}/static/image/1.jpg" class="header_pic" width="90" height="90"></img>
 	   		 作者：${sessionScope.username}
@@ -42,9 +57,34 @@
 </body>
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
+	$("#deleteButton").eq(0).on("click", function() {
+		var articleId = $("#articleId").val();
+		var checkText = $("#articleId").find("option:selected").text();	
+		if(checkText == "") {
+			alert("没有文章了");
+			return;
+		}
+		var checked = confirm("你确定要删除 \""+checkText+"\" 这篇文章?");
+		if(checked){
+			$.ajax({
+				type : "post",
+				url : "${basePath}/controller/editController.jsp",
+				data : {
+					"articleId" : articleId
+				},
+				error : function() {
+					alert("删除出错!");
+				},
+				success : function(data) {
+					//alert("完成");
+					window.location.href = "${basePath}/edit.jsp";	
+				}
+			});
+		}
+	});
 	$(".subButton").eq(0).on("click", function() {
 		var subtitle = $("#subtitle").val();
-		var categoryId = 2;//$("#categoryId").find("option:selected").val();
+		var categoryId = $("#categoryId").val();
 		var titleTxt = $("#titleTxt").val();
 		var txt = $("#commenttxt").val();
 		var author = "${sessionScope.username}";
@@ -61,7 +101,7 @@
 				"description" : description	//文章封面小简介
 			},
 			error : function() {  //如果出错了,将事件重新绑定
-				//alert("error");
+				alert("error");
 			},
 			success : function(data) {  //返回成功执行回调函数
 				if (data == -1){ 

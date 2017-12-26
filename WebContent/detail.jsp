@@ -43,7 +43,7 @@
 	<div class="right">
 	    <div class="author">
 	    	<img src="${basePath}/static/image/1.jpg" class="header_pic" width="90" height="90"></img>
-	   					 作者：张三
+	   					 作者：${article.author}
 	    </div>
 	</div>
 	<div style="clear: both"></div>

@@ -17,7 +17,7 @@ public class ArticleService {
 				+ " and is_delete = 0"
 				+ " and is_published = 1"
 				+ " and category_id = ?"
-				+ " order by update_time desc limit ?,?";
+				+ " order by update_time desc limit ?,?";//根据update_time降序, 获取?条开始到?条
 		
 		return DataBaseUtils.queryForList(sql, categoryId, start, end);
 	}

@@ -24,54 +24,58 @@
 		<ul>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/morning.jpg" alt="5" />
+					<img src="${basePath}/static/image/1.png" alt="5" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/noon.jpg" alt="1" />
+					<img src="${basePath}/static/image/2.png" alt="1" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/evening.jpg" alt="2" />
+					<img src="${basePath}/static/image/3.png" alt="2" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/at_night.jpg" alt="3" />
+					<img src="${basePath}/static/image/4.png" alt="3" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/noon.jpg" alt="4" />
+					<img src="${basePath}/static/image/5.png" alt="4" />
 				</a>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/morning.jpg" alt="5" />
+					<img src="${basePath}/static/image/1.png" alt="5" />
 				</a>
 			</li>
 		</ul>
 	</div>
 </div>
-
+<%
+   //查询出连载部分的相关文章
+   List<Map<String,Object>>  articles1 = articleService.getArticlesByCategoryId(1, 0, 7);
+   pageContext.setAttribute("articles1", articles1);
+%>
 <div class="h600" style="border:1px solid #ccc">
 	<div class="category">
 		<div class="title">连载部分</div>
 		<ul class="items">
-			<li class="item">
-				<div class="item_banner">
-					<div class="item_header">生活总是充满了乐趣</div>
-					<div class="item_name">聊聊我的大学室友</div>
-					<div class="item_author">@张三 著</div>
-				</div>
-				<div class="item_description">那些回忆,那些事...</div>
-			</li>
-			<li class="item"></li>
-			<li class="item"></li>
-			<div style="clear:both"></div>
-		</ul>
+	        <c:forEach items="${articles1}" var="item">
+            <li class="item" onclick="detail('${item.id}');">
+                <div class="item_banner">
+                    <div class="item_header">${item.header}</div>
+                    <div class="item_name" title="${item.name}">${item.name}</div>
+                    <div class="item_author">@${item.author} 著</div>
+                </div>
+                <div class="item_description">${item.description}</div>
+            </li>
+        </c:forEach>
+         <div style="clear:both"></div>
+	    </ul>
 	</div>
 	<%
     //查询出编程代码类的相关文章

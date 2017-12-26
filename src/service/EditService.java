@@ -2,14 +2,25 @@ package service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import util.DataBaseUtils;
 import bean.User;
 
-	//用户登陆服务类    暂时  没有用到
+	//文章编写/删除服务类
 
 public class EditService {
+	
+	public List<Map<String,Object>> getArticleName(String userName) {
+		String sql = "select id, header, name,"
+				+ "description from t_article where 1 = 1 "
+				+ " and is_delete = 0"
+				+ " and is_published = 1"
+				+ " and author = ?";
+		return DataBaseUtils.queryForList(sql, userName);
+	}
 	
 	public boolean insertArticle(String subtitle,
 								 String category,
@@ -45,4 +56,10 @@ public class EditService {
 		System.out.println("新增成功！");
 		return true;
 	}
+	
+	public void deleteArticle(String articleId) {
+		String sql ="update t_article set is_delete=1 where id = ?";
+		DataBaseUtils.update(sql, articleId);
+	}
+
 }

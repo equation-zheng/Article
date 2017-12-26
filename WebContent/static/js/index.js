@@ -52,7 +52,7 @@ function automove() {
 function detail(id) {
 	var a = document.createElement("a");
 	a.href = "detail.jsp?id=" + id;
-	console.log(a);
+	//console.log(a);
 	a.target = "_new";	//	知道在新窗口打开
 	a.click();	//触发打开事件
 }
