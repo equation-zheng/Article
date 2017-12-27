@@ -3,6 +3,8 @@ package test;
 import java.util.List;
 
 import bean.Article;
+import bean.Comment;
+import bean.Pic;
 import bean.User;
 import service.ArticleService;
 import util.DataBaseUtils;
@@ -22,8 +24,14 @@ public class TestMain {
 //		List<?> list = DataBaseUtils.queryForList(sql);
 //		System.out.println(list);
 	    
+/*DROP TABLE IF EXISTS `t_category`;
+CREATE TABLE `t_category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;*/
 		
-//		String sq1 = TableUtils.getCreateTableSQl(Article.class);
+//		String sq1 = TableUtils.getCreateTableSQl(Pic.class);
 //		System.out.println(sq1);
 		
 //		ArticleService ArticleService = new ArticleService();
@@ -34,6 +42,10 @@ public class TestMain {
 //		List list = ArticleService.getContentByArticleId("fa92fa40-08f1-4adc-8b00-571826670be7");
 //		System.out.println(list);
 		
+		
+		TestInsertOperation tio = new TestInsertOperation();
+		tio.insertPic();
+	
 	}
 	
 }

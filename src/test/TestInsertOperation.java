@@ -1,12 +1,13 @@
 package test;
 
-import java.util.List;
+import java.io.FileInputStream;
+
 import java.util.UUID;
 
 import org.junit.Test;
 
-import bean.Article;
 import util.DataBaseUtils;
+import util.ImgUtils;
 
 public class TestInsertOperation {
 
@@ -33,4 +34,44 @@ public class TestInsertOperation {
 		DataBaseUtils.update(sql,id,header,name,content,author,description,isPublished,isDelete,create_time,update_time,userId,categoryId);
 		System.out.println("新增成功！");
 	}
+	
+	//插入图片到数据库
+	public void insertPic() {
+		String path = "D:/at_night.jpg";
+		FileInputStream fis = null;
+		try {
+			fis = ImgUtils.readImage(path);
+			System.out.println(fis+"|"+fis.available());
+			String sql = "INSERT INTO t_pic (id,caption,img,user_id) VALUES (?,?,?,?)";
+			//DataBaseUtils.update(sql, "123", "图片1", fis.available(), "小明");	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//读取数据库中的图片
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

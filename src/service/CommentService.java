@@ -18,7 +18,6 @@ public class CommentService {
 				comment.getContent(), comment.getArticleId(),
 				new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()),0);
 	}
-	
 	/*
 	 * 根据文章id查询它的所有评论
 	 */
