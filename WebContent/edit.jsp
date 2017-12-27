@@ -6,26 +6,35 @@
 <% EditService editService = new EditService();%>
 <%
    String userName = session.getAttribute("username").toString();
-   List<Map<String,Object>> list = editService.getArticleName(userName);
-   //System.out.println(list+" "+userName);
-   pageContext.setAttribute("comments", list);
+   List<Map<String,Object>> listName = editService.getArticleName(userName);
+   List<Map<String,Object>> listCategory = editService.getArticleCategory();
+   System.out.println(listName+" "+userName+"|"+listCategory);
+   pageContext.setAttribute("listName", listName);
+   pageContext.setAttribute("listCategory", listCategory);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="${basePath}/static/css/header.css">
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/edit.css">
+
 <title>详情页</title>
 </head>
 <body>
+
+<%@include file="common/header.jsp" %>
+
 <div class="article">
 	<div class="title">文章编写</div>
 		<span class="light-font">文章分类:</span>
         <label id="lblSelect">
             <select class="selectPointOfInterest" id="categoryId">
-                <option value="1">连载部分</option>
-                <option value="2">编程代码类</option>
+            	<c:forEach items="${listCategory}" var = "listCategory">
+	                <option value="${listCategory.category_id}">${listCategory.category_name}</option>
+                </c:forEach>
             </select>
         </label>	
 		<span class="light-font">文章标题:</span>
@@ -40,7 +49,7 @@
 	<span>我的历史文章:</span>
     <label id="lblSelect">
         <select class="selectPointOfInterest" id="articleId">
-	        <c:forEach items="${comments}" var = "articleName">
+	        <c:forEach items="${listName}" var = "articleName">
 	            <option value="${articleName.id}">${articleName.name}</option>
 	        </c:forEach>
         </select>
@@ -57,6 +66,10 @@
 </body>
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
+
+	var editTitle = $("#editTitle").eq(0);
+	editTitle.css("background", "#74b0e2");
+	
 	$("#deleteButton").eq(0).on("click", function() {
 		var articleId = $("#articleId").val();
 		var checkText = $("#articleId").find("option:selected").text();	

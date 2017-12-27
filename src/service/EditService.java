@@ -13,8 +13,8 @@ import bean.User;
 
 public class EditService {
 	
+	//我的历史文章获取
 	public List<Map<String,Object>> getArticleName(String userName) {
-		
 		System.out.println(userName);
 		String sql = "select id, header, name,"
 				+ "description from t_article where 1 = 1 "
@@ -24,6 +24,7 @@ public class EditService {
 		return DataBaseUtils.queryForList(sql, userName);
 	}
 	
+	//文章编写
 	public boolean insertArticle(String subtitle,
 								 String category,
 								 String titleTxt,
@@ -59,9 +60,20 @@ public class EditService {
 		return true;
 	}
 	
+	//删除我的某个历史文章
 	public void deleteArticle(String articleId) {
 		String sql ="update t_article set is_delete=1 where id = ?";
 		DataBaseUtils.update(sql, articleId);
 	}
 
+	//文章分类获取
+	
+	public List<Map<String,Object>> getArticleCategory() {
+		
+		String sql = "select category_id, category_name from t_category where 1 = ?";
+		
+		return DataBaseUtils.queryForList(sql, 1);
+		
+	}
+	
 }

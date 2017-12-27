@@ -2,10 +2,8 @@
 	font-family: "Î¢ÈíÑÅºÚ";
 }
 select.selectPointOfInterest{
-	height                   : 20pt;
 	line-height              : 20pt;
-	padding-right            : 20pt;
-	text-indent              : 4pt;
+	padding-right            : 60pt;
 	text-align               : left;
 	vertical-align           : middle;
 	border                   : 1px solid #94c1e7;
