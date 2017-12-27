@@ -1,3 +1,8 @@
+
+var indexTitle = $("#indexTitle").eq(0);
+indexTitle.css("background", "#74b0e2");
+	
+
 var leftBtn = $(".leftBtn").eq(0);
 var rightBtn = $(".rightBtn").eq(0);
 var time = null;
