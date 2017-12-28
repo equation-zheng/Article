@@ -3,6 +3,7 @@ var indexTitle = $("#indexTitle").eq(0);
 indexTitle.css("background", "#74b0e2");
 	
 
+/*轮播代码*/
 var leftBtn = $(".leftBtn").eq(0);
 var rightBtn = $(".rightBtn").eq(0);
 var time = null;
@@ -50,8 +51,10 @@ function automove() {
     time = setTimeout(function() {
     	movePicture(index++);
     	automove();
-    },2000);
+    },5000);
 }
+
+/*轮播结束*/
 
 //打开详情页
 function detail(id) {
