@@ -104,19 +104,11 @@
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script src="${basePath}/static/js/index.js"></script>
 <script>
+var username = "${sessionScope.username}";
+	if(!username) window.location.href = "${basePath}/login.jsp";
 //body背景
 var bodyImg = $("#bodyImg").eq(0);
-var myDate = new Date();
-var h = myDate.getHours();
-if(h >= 6 && h <= 11) {
-	bodyImg.css("background-image", "url(${basePath}/static/image/morning.jpg)");
-}else if(h >= 12 && h <= 15) {
-	bodyImg.css("background-image", "url(${basePath}/static/image/noon.jpg)");
-}else if(h >= 16 && h <= 18) {
-	bodyImg.css("background-image", "url(${basePath}/static/image/evening.jpg)");
-}else{
-	bodyImg.css("background-image", "url(${basePath}/static/image/at_night.jpg)");
-}
+bodyImg.css("background-image", "url(${basePath}/static/image/bodyBackground.jpg)");
 </script>
 </html>
 
