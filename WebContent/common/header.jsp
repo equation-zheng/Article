@@ -10,7 +10,7 @@
 	    		<c:otherwise>
 	    			<ul >
 				        <li class="first" id="indexTitle"><a href="index.jsp">首页</a></li>
-				        <li class="item"><a href="wallpaper.jsp">梦幻壁纸</a></li>
+				        <li class="item"><a href="wall.jsp">梦幻壁纸</a></li>
 				        <li class="item"><a href="javascript:void(0)">热门专题</a></li>
 				        <li class="item"><a href="javascript:void(0)">欣赏美文</a></li>
 				        <li class="item"><a href="javascript:void(0)">赞助</a></li>

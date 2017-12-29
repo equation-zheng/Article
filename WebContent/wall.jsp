@@ -1,12 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="common/taglib.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>wallpaper</title>
+<title>wall</title>
 </head>
 <style>
 *{
@@ -23,6 +24,7 @@ margin:60px auto;
 border-radius:25px;
 box-shadow:5px 5px 10px #ccc;
 padding:20px;
+height: 1000px;
 
 /*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
 -moz-column-count:4;
@@ -72,9 +74,36 @@ text-overflow:ellipsis;
 -moz-text-overflow: ellipsis;
 -webkit-text-overflow: ellipsis;
 }
+.header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+}
+.header .headerIn {
+width: 980px;
+margin: 0 auto;
+text-align: right;
+}
 </style>
 <body>
-<h3></h3>
+可以下载文件
+    	${fileNameMap}
+		<c:forEach var="me" items="${fileNameMap}">
+	        <c:url value="/download" var="downurl">
+	            <c:param name="filename" value="${me.key}"></c:param>
+	        </c:url>
+	         	${me.value}<a href="${downurl}">下载</a>
+	        <br />
+    	</c:forEach>
+<div class="header">
+	
+	<h3>--------------</h3>
+	 ${message}
+	<div class="headerIn">	
+		<button>上传我的本地壁纸</button>
+	</div>
+</div>
 <div id="con">
 	<div class="pic">
 		<img src="${basePath}/static/image/1.jpg" width="188px" />
@@ -85,7 +114,16 @@ text-overflow:ellipsis;
          	最大的敌人。能看书就不要发呆，能碎觉就不要拖延，能吃饭就不
         	要饿着，能亲吻就不要说话，能找到自己想做的事情就不容易了，
          	青春得浪费在美好事物上。
-         </p>
+        </p>
+	</div>
+	<div class="upLoad">
+		<form action="${pageContext.request.contextPath}/wall"
+		 	  enctype="multipart/form-data" method="post">
+        	上传用户：<input type="text" name="username"><br/>
+        	上传文件1:<input type="file" name="file1"><br/>
+        	上传文件2:<input type="file" name="file2"><br/>
+        			<input type="submit" value="提交">
+    	</form>
 	</div>
 </div>
 </body>
