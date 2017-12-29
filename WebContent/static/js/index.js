@@ -1,60 +1,63 @@
 
 var indexTitle = $("#indexTitle").eq(0);
 indexTitle.css("background", "#74b0e2");
-	
-
-/*轮播代码*/
-var leftBtn = $(".leftBtn").eq(0);
-var rightBtn = $(".rightBtn").eq(0);
-var time = null;
-
-rightBtn.on("click", function() {
-    clearTimeout(time);
-    time = setTimeout(function() {
-        index++;
-        movePicture();
-        automove();
-    },500);
-});
-
-leftBtn.on("click", function() {
-    clearTimeout(time);
-    time = setTimeout(function() {
+	window.onload = function(){
+    $("#box").hover(function(){
+        $(".btn").fadeIn();
+    },function(){
+        $(".btn").fadeOut()
+    })
+    var li = $("#box ul li");
+    //console.log($li);
+    var timer = setInterval(func,2000);
+    var index = 0;
+    function func(){
+        if(index < 7){
+            index++;
+        }
+        else{
+            index=0;
+        }
+        change(index);
+    }
+    function change(n){
+        li.eq(n).fadeIn("400").siblings().fadeOut("400");
+        $(".spiner p").eq(n).css("border-color","#969087").siblings().css("border-color","#B4ADA2");
+        $(".spiner p").eq(n).css("background","rgba(0,0,0,0)").siblings().css("background","rgba(0,0,0,0.5)");
+    }
+    change(index);
+    $(".spiner p").hover(function(){
+        clearInterval(timer);
+        var temp = $(this).index();
+        change(temp);
+    },function(){
+        var temp = $(this).index();
+        index = temp;
+        timer = setInterval(func,2000)
+    })
+    li.hover(function(){
+        clearInterval(timer);
+        change($(this).index())
+    },function(){
+        index = $(this).index();
+        timer = setInterval(func,2000)
+    });
+    $(".leftBtn").click(function(){
         index--;
-        movePicture();
-        automove();
-    },500);
-});
-
-
-
-var ul = $('.banner .content ul').eq(0);
-var index = 0;
-var imgwidth = $('.banner .content ul li').width();
-var len = $('.banner .content ul li').length - 1;
-
-function movePicture() {
-    $('.banner .content ul').animate({'margin-left': -imgwidth * (index+1)},1000,function() {
-        if (index == len) {
-            $(this).css('margin-left', - imgwidth);
+        if(index < 0){
+            index = 7
+        }
+        change(index);
+    })
+    $(".rightBtn").click(function(){
+        index++;
+        if(index > 7){
             index = 0;
         }
-        if (index == -1) {
-            $(this).css('margin-left', -imgwidth * len);
-            index = len - 1;
-        }
-    });
-}
-window.onload(automove());
-
-function automove() {
-    time = setTimeout(function() {
-    	movePicture(index++);
-    	automove();
-    },5000);
+        change(index);
+    })
 }
 
-/*轮播结束*/
 
 //打开详情页
 function detail(id) {

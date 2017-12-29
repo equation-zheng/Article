@@ -18,7 +18,7 @@
 <%@include file="common/header.jsp" %>
 
 <div class="banner">
-	<div class="content">
+	<div id="box">
 		<i class="leftBtn"></i>
 		<i class="rightBtn"></i>
 		<ul>
@@ -52,7 +52,21 @@
 					<img src="${basePath}/static/image/1.png" alt="5" />
 				</a>
 			</li>
+			<li>
+				<a href="javascript:void(0)">
+					<img src="${basePath}/static/image/2.png" alt="1" />
+				</a>
+			</li>
 		</ul>
+		<div class="spiner">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
 	</div>
 </div>
 <%

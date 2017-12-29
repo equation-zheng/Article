@@ -9,36 +9,54 @@
 }
 .banner	{
 	height: 380px;
-	background: #ccc;
 	position: relative;
 	overflow: hidden;
 }
-.banner .content {
+.banner #box {
 	width: 1024px;
 	height: 380px;
 	margin: 0 auto;
     position: relative;
 }
-.banner .content ul {
-    width: 10000px;
-    margin-left: -1028px;
-}
-.banner .content ul li {
+.banner #box ul li {
+	overflow: hidden;
     margin: 0;
     list-style: none;
-    float: left;
-    border-radius: 30px;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
     /*border: solid 1px green;*/
 }
-.banner .content ul li img {
+.banner #box ul li img {
 	width: 1024px;
     height: 380px;
 }
-
+.banner #box .spiner{
+    width: 260px;
+    height: 9px;
+    position: absolute;
+    bottom: 20px;
+    left: 455px;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+.banner #box .spiner p{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    float: left;
+    border: solid 3px #B4ADA2;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
 
 /* 轮播图左右按钮 */
-.banner .content .leftBtn,
-.banner .content .rightBtn {
+.banner  #box .leftBtn,
+.banner  #box .rightBtn {
     position: absolute;
     top: 160px;
     transform: rotate(45deg);
@@ -47,19 +65,19 @@
     opacity: .2;
     padding: 15px;
 }
-.banner .content:hover .leftBtn,
-.banner .content:hover .rightBtn {
+.banner  #box:hover .leftBtn,
+.banner  #box:hover .rightBtn {
     -webkit-transition: opacity .5s;
     -moz-transition: opacity .5s;
     transition: opacity .5s;
     opacity: 1;
 }
-.banner .content .leftBtn {
+.banner #box .leftBtn {
     left: -30px;
     border-left-style: solid;
     border-bottom-style: solid;
 }
-.banner .content .rightBtn {
+.banner #box .rightBtn {
     right: -30px;
     border-right-style: solid;
     border-top-style: solid;
