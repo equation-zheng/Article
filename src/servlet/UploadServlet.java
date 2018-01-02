@@ -31,15 +31,14 @@ public class UploadServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 						throws ServletException, IOException {
-		//得到上传文件的保存目录,将上传文件存放在WEB-INF目录下,不允许外界直接访问,保证上传文件的安全
-		String savePath = this.getServletContext().getRealPath("WEB-INF/wall");
+		String savePath = "E:/Article";
 		File saveFileDir = new File(savePath);
 		if (!saveFileDir.exists()) {
 			//创建临时目录
 			saveFileDir.mkdirs();
 		}
 		//上传时生成临时文件保存目录
-		String tmpPath = this.getServletContext().getRealPath("WEB-INF/tem");
+		String tmpPath = "E:/Article/tem";
 		File tmpFile = new File(tmpPath);
 		if (!tmpFile.exists()) {
 			tmpFile.mkdirs();
@@ -64,7 +63,8 @@ public class UploadServlet extends HttpServlet {
                 public void update(long readedBytes,
                 				   long totalBytes,
                 				   int currentItem) {
-                    System.out.println("当前已处理：" + readedBytes + "-----------文件大小为：" + totalBytes + "--" + currentItem);
+                    System.out.println(currentItem + "  当前已处理：" + readedBytes/1024/1024 + "MB");
+                    System.out.println("文件大小为：" + totalBytes/1024/1024 + "MB");
                 }
             });
 			//解决上传文件名的中文乱码问题

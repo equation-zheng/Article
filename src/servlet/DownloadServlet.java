@@ -20,7 +20,7 @@ public class DownloadServlet extends HttpServlet {
 		String fileName = request.getParameter("filename");
 		fileName = new String(fileName.getBytes("iso8859-1"), "UTF-8");
 		//上传的文件都是要保存在/WEB-INF目录下的子目录当中
-		String fileSaveRootPath = this.getServletContext().getRealPath("/WEB-INF/wall");
+		String fileSaveRootPath = "E:/Article";
 		//得到要下载的文件
 		File file = new File(fileSaveRootPath + "\\" + fileName);
 		//如果文件不存在

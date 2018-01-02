@@ -36,7 +36,8 @@
     line-height:50px ;
     cursor: pointer ;
 }
-a {
+.header ul li a,
+.header .login a {
     color: #fff ;
     text-decoration: none ;
 }

@@ -15,17 +15,16 @@ public class ListFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("---------------------------------------");
 		//获取上传文件的目录
-		String uploadFilePath = this.getServletContext().getRealPath("/WEB-INF/wall");
+		String uploadFilePath = "E:/Article";
 		//储存要下载的文件名
 		Map<String, String> fileNameMap = new HashMap<String, String>();
 		//递归遍历filepath目录下的所有文件和目录,将文件的文件名储存到map集合中
 		listFile(new File(uploadFilePath), fileNameMap);// File既可以代表一个文件也可以代表一个目录
 		//将Map集合发送到 jsp页面显示
-		System.out.println(fileNameMap);
+		//System.out.println(fileNameMap);
 		request.setAttribute("fileNameMap", fileNameMap);
-		request.getRequestDispatcher("/wall.jsp").forward(request, response);
+		request.getRequestDispatcher("/listFile.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
