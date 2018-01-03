@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Servers&apos;" deleteContents="false" description="Delete resource &apos;Servers&apos;" element1="/Servers" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1510710779453"/>&#x0A;<refactoring comment="Delete resource &apos;Article/WebContent/common/taglib.jsp&apos;" deleteContents="false" description="Delete resource &apos;Article/WebContent/common/taglib.jsp&apos;" element1="/Article/WebContent/common/taglib.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1510735116158"/>
-</session>

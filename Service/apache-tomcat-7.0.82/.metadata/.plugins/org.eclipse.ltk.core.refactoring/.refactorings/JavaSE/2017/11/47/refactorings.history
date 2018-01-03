@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;Data_21.Method&apos; to &apos;TestMethod&apos;&#x0D;&#x0A;- Original project: &apos;JavaSE&apos;&#x0D;&#x0A;- Original element: &apos;Data_21.Method&apos;&#x0D;&#x0A;- Renamed element: &apos;Data_21.TestMethod&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Method&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Data_21{Method.java[Method" matchStrategy="1" name="TestMethod" qualified="false" references="true" similarDeclarations="false" stamp="1511410451707" textual="false" version="1.0"/>
-</session>

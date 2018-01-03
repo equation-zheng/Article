@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:18 +0800] "GET /Article/login.jsp HTTP/1.1" 200 3344
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:18 +0800] "GET /Article/static/css/index.css HTTP/1.1" 304 -
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:18 +0800] "GET /Article/static/js/jQuery.js HTTP/1.1" 304 -
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:19 +0800] "GET /Article/login.jsp HTTP/1.1" 200 3344
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:19 +0800] "GET /Article/login.jsp HTTP/1.1" 200 3344
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:20 +0800] "POST /Article/controller/loginController.jsp HTTP/1.1" 200 14
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:29 +0800] "POST /Article/controller/loginController.jsp HTTP/1.1" 200 14
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:34 +0800] "POST /Article/controller/loginController.jsp HTTP/1.1" 200 14
-0:0:0:0:0:0:0:1 - - [01/Dec/2017:11:37:53 +0800] "GET /Article/login.jsp HTTP/1.1" 200 3344
