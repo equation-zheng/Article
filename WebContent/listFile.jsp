@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="common/taglib.jsp" %>
+<%@ page language="java" import="java.util.*"%>
+<%@ page language="java" import="service.ListFileService"%>
+<% ListFileService listFileService = new ListFileService(); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,7 +13,7 @@
 
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/header.css">
 
-<title>wall</title>
+<title>listFile</title>
 </head>
 <style>
 *{
@@ -23,7 +26,7 @@ width:980px;
 margin:60px auto;
 border-radius:25px;
 box-shadow:5px 5px 10px #ccc;
-padding:20px 20px 100px 20px;
+padding:20px 20px 200px 20px;
 position: relative;
 /*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
 -moz-column-count:4;
@@ -91,9 +94,10 @@ position: absolute;
 left: 0;
 right: 0;
 bottom: 0;
-display: none;
+display: block;
 }
 </style>
+
 <body>
 <%@include file="common/header.jsp"%>
 <button class="wallUpLoadBtn">上传壁纸</button>
@@ -105,20 +109,27 @@ display: none;
 	            <c:param name="filename" value="${me.key}"></c:param>
 	        </c:url>
 			<img class="small_img" width="980px" src="${downurl}"/>
-	        <h3>${me.value}</h3>
-	        <p>
-	        	
+	        <h3 class="imgname">${me.value}</h3>
+	        <p class="username">
+	        	${me.value}
 	        </p>
-	         	${me.value}<a href="${downurl}">下载</a>
+	         	<span class="imgname">${me.value}</span>
+	         	<a href="${downurl}">下载</a>
 	        <br />
         </div>
     </c:forEach>
     <div class="UpLoad">
     	<form action="${pageContext.request.contextPath }/wall"
     		  enctype="multipart/form-data" method="post">
-         	上传用户：<input type="text" name="username"><br/>
-         	上传文件1:<input type="file" name="file1"><br/>
-         	上传文件2:<input type="file" name="file2"><br/>
+			  <input style="display: none" type="text" name="username"
+			  		 value="${sessionScope.username}"><br/>
+         	          上传壁纸:
+         	  <input type="file" name="file1"><br/>
+         	  <div style="height: 20px;background:rgba(0,0,0,0)"></div>
+				壁纸简述:
+         	  <textarea rows="4" cols="30" style="vertical-align:top"
+         	  			type="text" name="briefly" placeholder="请小于20个字!!"
+         	  			>这是壁纸描述</textarea>
          <input type="submit" value="提交" class="submit">
 	</form>
     </div>
@@ -128,9 +139,13 @@ display: none;
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
 $(function(){
+	var username = "${sessionScope.username}";
+	if(!username) window.location.href = "${basePath}/login.jsp";
+	
 	$(".wallUpLoadBtn").click(function(e) {
 		$(".UpLoad").show();
 	});
+	
 	$(document).bind("click",function(e){ 
 		var target = $(e.target); 
 		if(target.closest(".UpLoad").length == 0 &&
@@ -139,11 +154,23 @@ $(function(){
 		}
 	}); 
 	
+	$(".username").each(function(index, element) {
+		var $old=$(this).html();
+		var $new=$old.substring(0, $old.indexOf('_'));
+		$(this).html($new);
+	});
 	
+	$(".imgname").each(function(index, element) {
+		var $old=$(this).html();
+		var $new=$old.substring($old.indexOf('_') + 1, $old.length);
+		$(this).html($new);
+	});
+
 	$(".small_img").click(function(e) {
 		$("#img").attr("src",this.src);
 		$(".bigImg").show();
 	});
+	
 	$(document).bind("click",function(e){ 
 		var target = $(e.target); 
 		if(target.closest(".bigImg").length == 0 &&

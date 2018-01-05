@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,15 +20,18 @@ import org.apache.commons.fileupload.FileUploadBase.FileSizeLimitExceededExcepti
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import util.DataBaseUtils;
+import util.ImgUtils;
+
 
 public class UploadServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private String username = null;
 	
 	//定义允许上传文件扩展名
-	private String Ext_Name = "gif,jpg,jpeg,png,bmp,swf,flv,mp3,"
-			+ "wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb,doc,docx,xls,"
-			+ "xlsx,ppt,htm,html,txt,zip,rar,gz,bz2";
+	private String Ext_Name = "gif,jpg,jpeg,png,bmp,JPEG2000,tiff,psd,"
+			+ ",swf,svg,pcx,dxf,wmf,emf,lic,eps,tga";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 						throws ServletException, IOException {
@@ -87,7 +91,7 @@ public class UploadServlet extends HttpServlet {
 					String name = item.getFieldName();
 					//解决普通输入项数据中文乱码问题
 					String value = item.getString("UTF-8");
-                    System.out.println(name + "=" + value);
+                    if(name.equals("username")) username = value;
                 } else// 如果fileitem中封装的是上传文件
                 {
 					//得到上传文件的文件名
@@ -138,9 +142,6 @@ public class UploadServlet extends HttpServlet {
 					//删除临时文件
 					item.delete();
                     message = message + "文件：" + fileName + "，上传成功<br/>";
-					//保存文件方法二
-					//File uploadedFile = new File(savePath, saveFileName);
-					//item.write(uploadedFile);
 				}
 			}
 		} catch (FileSizeLimitExceededException e) {
@@ -159,6 +160,6 @@ public class UploadServlet extends HttpServlet {
 	}
 	private String makeFileName(String fileName) {
 		// 为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名
-		return UUID.randomUUID().toString().replaceAll("-", "") + "_" + fileName;
+		return UUID.randomUUID().toString().replaceAll("-", "") + "~" + username + "_" + fileName;
 	}
 }

@@ -44,7 +44,7 @@ public class ListFileServlet extends HttpServlet {
 				listFile(f, map);
 			}
 		} else {
-			String realName = file.getName().substring(file.getName().indexOf("_") + 1);
+			String realName = file.getName().substring(file.getName().indexOf("~") + 1);
 			//file.getName()得到的是文件的原始名称,这个名称是唯一的,因此可以作为key,
 			//realName是处理过后的名称,有可能会重复
 			map.put(file.getName(), realName);
