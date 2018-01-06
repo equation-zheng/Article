@@ -11,6 +11,13 @@
 
 <title>登陆/注册</title>
 </head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+</style>
 <body id="bodyImg">
 
 	<%@include file="common/header.jsp"%>

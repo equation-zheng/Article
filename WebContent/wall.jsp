@@ -12,7 +12,11 @@
 <title>wall</title>
 </head>
 <style>
-
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
 </style>
 <body>
 	${message}

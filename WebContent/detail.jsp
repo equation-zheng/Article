@@ -25,6 +25,13 @@
 <link rel="stylesheet" type="text/css" href="${basePath}/static/css/detail.css">
 <title>详情页</title>
 </head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+</style>
 <body>
 <div class="article">
 	<div class="title">${article.name}</div>

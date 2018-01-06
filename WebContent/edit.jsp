@@ -23,6 +23,13 @@
 
 <title>详情页</title>
 </head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+</style>
 <body>
 
 <%@include file="common/header.jsp" %>
@@ -67,8 +74,7 @@
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
 
-	var editTitle = $("#editTitle").eq(0);
-	editTitle.css("background", "#74b0e2");
+	$("#editTitle").css("background", "#74b0e2");
 	
 	$("#deleteButton").eq(0).on("click", function() {
 		var articleId = $("#articleId").val();
