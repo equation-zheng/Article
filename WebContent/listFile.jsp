@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="common/taglib.jsp" %>
-<%@ page language="java" import="java.util.*"%>
-<%@ page language="java" import="service.ListFileService"%>
-<% ListFileService listFileService = new ListFileService(); %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,7 +16,8 @@
 <style>
 *{
 padding:0;
-margin:0
+margin:0;
+font-family: "微软雅黑";
 }
 /*给大盒子添加样式*/
 #con{
@@ -63,18 +62,12 @@ color:#999;
 #con .pic p{
 font-size:12px;
 color:#666;
-line-height:20px;
-text-indent: 10px;
-letter-spacing: 1px;
-display: -webkit-box;
--webkit-line-clamp: 5;
--webkit-box-orient: vertical;
-overflow:hidden;
-/*很多文字，一行显示不下，用省略号显示的代码*/
-text-overflow:ellipsis;
--o-text-overflow:ellipsis; 
--moz-text-overflow: ellipsis;
--webkit-text-overflow: ellipsis;
+line-height:25px;
+text-align: right;
+}
+#con .pic p a {
+text-decoration: none;
+color: #6598B3;
 }
 .wallUpLoadBtn {
 position: fixed;
@@ -82,12 +75,13 @@ top: 60px;
 right: 0;
 padding: 10px 20px;
 }
-.small_img{
-    width: 180px;
-}
 .bigImg{
 	position: fixed;
 	display: none;
+	width: auto;  
+    height: auto;  
+    max-width: 100%;  
+    max-height: 100%;
 }
 #con .UpLoad {
 position: absolute;
@@ -102,20 +96,19 @@ display: block;
 <%@include file="common/header.jsp"%>
 <button class="wallUpLoadBtn">上传壁纸</button>
 <div id="con">
-	<div class="bigImg"><img id="img" width="980px"/></div>
+	<div class="bigImg"><img id="img"/></div>
 	<c:forEach var="me" items="${fileNameMap}">
 		<div class="pic">
 			<c:url value="/download" var="downurl">
 	            <c:param name="filename" value="${me.key}"></c:param>
 	        </c:url>
-			<img class="small_img" width="980px" src="${downurl}"/>
+			<img class="small_img" width="185px" height="210px" src="${downurl}"/>
 	        <h3 class="imgname">${me.value}</h3>
-	        <p class="username">
-	        	${me.value}
-	        </p>
-	         	<span class="imgname">${me.value}</span>
-	         	<a href="${downurl}">下载</a>
-	        <br />
+	        <p>
+	        	作者: <span class="username">${me.value}</span>
+	        	<br>
+	        	<a href="${downurl}">下载原图</a>
+	        </p>	
         </div>
     </c:forEach>
     <div class="UpLoad">
@@ -138,6 +131,9 @@ display: block;
 
 <script src="${basePath}/static/js/jQuery.js"></script>
 <script>
+
+$("#listFileTitle").css("background", "#74b0e2");
+
 $(function(){
 	var username = "${sessionScope.username}";
 	if(!username) window.location.href = "${basePath}/login.jsp";
