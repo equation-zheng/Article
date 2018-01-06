@@ -41,7 +41,7 @@ public class EditService {
 		
 		String header = subtitle;
 		String name  = titleTxt;
-		String content = txt;
+		String content = turn(txt);
 		//String author = "壁纸哥";
 		//String description = "简介";
 		int isPublished = 1 ;
@@ -59,6 +59,20 @@ public class EditService {
 		System.out.println("新增成功！");
 		return true;
 	}
+
+	// 字符处理函数 换行符变成<br>
+	public String turn(String str) {  
+
+	    while (str.indexOf("\n") != -1) {  
+	        str = str.substring(0, str.indexOf("\n")) + "<br>"  
+	                + str.substring(str.indexOf("\n") + 1);  
+	    }  
+	    while (str.indexOf(" ") != -1) {  
+	        str = str.substring(0, str.indexOf(" ")) + "&nbsp"  
+	                + str.substring(str.indexOf(" ") + 1);  
+	    }  
+	    return str;  
+	}  
 	
 	//删除我的某个历史文章
 	public void deleteArticle(String articleId) {
