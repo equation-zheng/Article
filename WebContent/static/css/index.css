@@ -94,20 +94,23 @@
 	font-size: 18px;
 	color: #666;
 }
+.category .items {
+	overflow: hidden;
+    height: 273px;
+}
 .category .items .item {
     width: 160px;
     height: 231px;
-    background: #ccc;
     margin: 20px;
     float: left;
     list-style: none;
     overflow:hidden;
+    border-radius: 3px;
 }
 .category .items .item div {
     text-align: center;
 }
 .category .items .item .item_banner {
-    background: #666;
     color: #fff;
     transition: all .5s;
 }
