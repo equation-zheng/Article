@@ -13,6 +13,13 @@
 
 <title>首页</title>
 </head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+</style>
 <body id="bodyImg">
 
 <%@include file="common/header.jsp" %>
@@ -71,14 +78,49 @@
 </div>
 <%
    //查询出连载部分的相关文章
-   List<Map<String,Object>>  articles1 = articleService.getArticlesByCategoryId(1, 0, 7);
+   List<Map<String,Object>>  articles1 = articleService.getArticlesByCategoryId(1, 0, 21);
    pageContext.setAttribute("articles1", articles1);
 %>
 <div class="h600" style="border:1px solid #ccc">
 	<div class="category">
-		<div class="title">连载部分</div>
+		<div class="title">
+			连载部分
+			<a style="text-decoration: none;color: #6598B3;"
+			   href="#"
+			   onclick="itemAll(0)">
+	     	>>
+	     	</a>
+	     </div>
 		<ul class="items">
 	        <c:forEach items="${articles1}" var="item">
+            <li class="item" onclick="detail('${item.id}');">
+                <div class="item_banner">
+                    <div class="item_header">${item.header}</div>
+                    <div class="item_name" title="${item.name}">${item.name}</div>
+                    <div class="item_author">@${item.author} 著</div>
+                </div>
+                <div class="item_description">${item.description}</div>
+            </li>
+        </c:forEach>
+         <div style="clear:both">---</div>
+	    </ul>
+	</div>
+	<%
+    //查询出编程代码类的相关文章
+    List<Map<String,Object>>  articles2 = articleService.getArticlesByCategoryId(2, 0, 21);
+    pageContext.setAttribute("articles2", articles2);
+	%>
+	<div class="category">
+	    <div class="title">
+	    	编程代码类
+			<a style="text-decoration: none;color: #6598B3;"
+			   href="#"
+			   onclick="itemAll(1)">
+	     	>>
+	     	</a>
+	     </div>
+	    <ul class="items">
+	        <c:forEach items="${articles2}" var="item">
             <li class="item" onclick="detail('${item.id}');">
                 <div class="item_banner">
                     <div class="item_header">${item.header}</div>
@@ -93,14 +135,20 @@
 	</div>
 	<%
     //查询出编程代码类的相关文章
-    List<Map<String,Object>>  articles2 = articleService.getArticlesByCategoryId(2, 0, 7);
-    pageContext.setAttribute("articles2", articles2);
+    List<Map<String,Object>>  articles3 = articleService.getArticlesByCategoryId(3, 0, 21);
+    pageContext.setAttribute("articles3", articles3);
 	%>
-	<!-- ${articles2} -->
 	<div class="category">
-	    <div class="title">编程代码类</div>
+	    <div class="title">
+	   		 生活感悟类
+			 <a style="text-decoration: none;color: #6598B3;" 
+				 href="#"
+				 onclick="itemAll(2)">
+	     	>>
+	     	</a>
+	     </div>
 	    <ul class="items">
-	        <c:forEach items="${articles2}" var="item">
+	        <c:forEach items="${articles3}" var="item">
             <li class="item" onclick="detail('${item.id}');">
                 <div class="item_banner">
                     <div class="item_header">${item.header}</div>
@@ -120,9 +168,8 @@
 <script>
 var username = "${sessionScope.username}";
 	if(!username) window.location.href = "${basePath}/login.jsp";
-//body背景
-var bodyImg = $("#bodyImg").eq(0);
-bodyImg.css("background-image", "url(${basePath}/static/image/bodyBackground.jpg)");
+body背景
+$("#bodyImg").css("background-image", "url(${basePath}/static/image/bodyBackground.jpg)");
 </script>
 </html>
 
