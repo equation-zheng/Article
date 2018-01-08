@@ -15,88 +15,104 @@
 </head>
 <style>
 *{
-padding:0;
-margin:0;
-font-family: "微软雅黑";
+	padding:0;
+	margin:0;
+	font-family: "微软雅黑";
 }
-/*给大盒子添加样式*/
-#con{
-width:980px;
-margin:60px auto;
-border-radius:25px;
-box-shadow:5px 5px 10px #ccc;
-padding:20px 20px 200px 20px;
-position: relative;
-/*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
--moz-column-count:4;
--moz-column-gap:30px;
--moz-column-rule:0px solid #ff0000;   //火狐浏览器
--webkit-column-count:4;
--webkit-column-gap:30px;
--webkit-column-rule:0px solid #ff0000;   //Google chrome 
--o-column-count:4;
--o-column-gap:30px;
--o-column-rule:0px solid #ff0000;   //Opera浏览器的
+	/*给大盒子添加样式*/
+	#con{
+	width:980px;
+	margin:60px auto;
+	border-radius:25px;
+	box-shadow:5px 5px 10px #ccc;
+	padding:20px 20px 200px 20px;
+	position: relative;
+	/*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
+	-moz-column-count:4;
+	-moz-column-gap:30px;
+	-moz-column-rule:0px solid #ff0000;   //火狐浏览器
+	-webkit-column-count:4;
+	-webkit-column-gap:30px;
+	-webkit-column-rule:0px solid #ff0000;   //Google chrome 
+	-o-column-count:4;
+	-o-column-gap:30px;
+	-o-column-rule:0px solid #ff0000;   //Opera浏览器的
 }
 
 /*小盒子内容区的样式，display:inline-block：实现 效果*/
 #con .pic{
-width:188px;
-min-height:100px;
-box-shadow:2px 2px 6px #b5b5b5;
-padding:20px 15px;
-margin:10px;
-display:inline-block;
-border-radius: 5px;
+	width:188px;
+	min-height:100px;
+	box-shadow:2px 2px 6px #b5b5b5;
+	padding:20px 15px;
+	margin:10px;
+	display:inline-block;
+	border-radius: 5px;
 }
 #con .pic h3{
-border-bottom:1px solid #ddd;
-line-height:30px;
-text-align:center;
-padding:5px 5px;
+	border-bottom:1px solid #ddd;
+	line-height:30px;
+	text-align:center;
+	padding:5px 5px;
 }
 #con .pic h3 a{
-text-decoration:none;
-color:#999;
+	text-decoration:none;
+	color:#999;
 }
 #con .pic p{
-font-size:12px;
-color:#666;
-line-height:25px;
-text-align: right;
+	font-size:12px;
+	color:#666;
+	line-height:25px;
+	text-align: right;
 }
 #con .pic p a {
-text-decoration: none;
-color: #6598B3;
-}
-.wallUpLoadBtn {
-position: fixed;
-top: 60px;
-right: 0;
-padding: 10px 20px;
+	text-decoration: none;
+	color: #6598B3;
 }
 .bigImg{
 	position: fixed;
+	top: 50px;
 	display: none;
+    max-width: 980px;
+    z-index: 99;
+}
+#img{
 	width: auto;  
     height: auto;  
     max-width: 100%;  
-    max-height: 100%;
+    max-height: 800px;
 }
-#con .UpLoad {
-position: absolute;
-left: 0;
-right: 0;
-bottom: 0;
-display: block;
+.wallUpLoadBtn {
+	position: fixed;
+	top: 60px;
+	right: 0;
+	padding: 10px 20px;
+	z-index: 100;
+}
+.UpLoad {
+	position: fixed;
+	top: 100px;
+	right: 30px;
+	z-index: 100;
+	display: none;
 }
 </style>
 
 <body>
 <%@include file="common/header.jsp"%>
 <button class="wallUpLoadBtn">上传壁纸</button>
+<div class="UpLoad">
+    	<form action="${pageContext.request.contextPath }/wall"
+    		  enctype="multipart/form-data" method="post">
+			  <input style="display: none" type="text" name="username"
+			  		 value="${sessionScope.username}"><br/>
+         	          上传壁纸:
+         	  <input type="file" name="file1">
+         	  <input type="submit" value="提交" class="submit">
+	</form>
+</div>
 <div id="con">
-	<div class="bigImg"><img id="img"/></div>
+	<div class="bigImg"><img id="img" /></div>
 	<c:forEach var="me" items="${fileNameMap}">
 		<div class="pic">
 			<c:url value="/download" var="downurl">
@@ -111,21 +127,6 @@ display: block;
 	        </p>	
         </div>
     </c:forEach>
-    <div class="UpLoad">
-    	<form action="${pageContext.request.contextPath }/wall"
-    		  enctype="multipart/form-data" method="post">
-			  <input style="display: none" type="text" name="username"
-			  		 value="${sessionScope.username}"><br/>
-         	          上传壁纸:
-         	  <input type="file" name="file1"><br/>
-         	  <div style="height: 20px;background:rgba(0,0,0,0)"></div>
-				壁纸简述:
-         	  <textarea rows="4" cols="30" style="vertical-align:top"
-         	  			type="text" name="briefly" placeholder="请小于20个字!!"
-         	  			>这是壁纸描述</textarea>
-         <input type="submit" value="提交" class="submit">
-	</form>
-    </div>
 </div>
 </body>
 
@@ -169,7 +170,8 @@ $(function(){
 	
 	$(document).bind("click",function(e){ 
 		var target = $(e.target); 
-		if(target.closest(".bigImg").length == 0 &&
+		console.log(target.closest("#img").length+"||"+target.closest(".small_img").length);
+		if(target.closest("#img").length == 0 &&
 		   target.closest(".small_img").length == 0) {
 			$(".bigImg").hide();
 		}
