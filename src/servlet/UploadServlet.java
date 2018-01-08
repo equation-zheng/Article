@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -67,8 +68,8 @@ public class UploadServlet extends HttpServlet {
                 public void update(long readedBytes,
                 				   long totalBytes,
                 				   int currentItem) {
-                    System.out.println(currentItem + "  当前已处理：" + readedBytes/1024/1024 + "MB");
-                    System.out.println("文件大小为：" + totalBytes/1024/1024 + "MB");
+                    System.out.println(currentItem + "  当前已处理：" + countFileSize(readedBytes));
+                    System.out.println("文件大小为：" + countFileSize(totalBytes));
                 }
             });
 			//解决上传文件名的中文乱码问题
@@ -161,5 +162,30 @@ public class UploadServlet extends HttpServlet {
 	private String makeFileName(String fileName) {
 		// 为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名
 		return UUID.randomUUID().toString().replaceAll("-", "") + "~" + username + "_" + fileName;
+	}
+	//文件大小转换成格式化的字符串
+	public static String countFileSize(long fileSize) {
+	    String fileSizeString = "";
+	    try {
+	        DecimalFormat df = new DecimalFormat("#.00");
+	        long fileS = fileSize;
+	        if (fileS == 0) {
+	            fileSizeString = "0KB";
+	        } else if (fileS < 1024) {
+	            fileSizeString = df.format((double) fileS) + "B";
+	        } else if (fileS < 1048576) {
+	            fileSizeString = df.format((double) fileS / 1024) + "KB";
+	        } else if (fileS < 1073741824) {
+	            fileSizeString = df
+	                    .format(((double) fileS / 1024 / 1024) - 0.01)
+	                    + "MB";
+	        } else {
+	            fileSizeString = df.format((double) fileS / 1024 / 1024 / 1024)
+	                    + "G";
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return fileSizeString;
 	}
 }
