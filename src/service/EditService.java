@@ -70,7 +70,11 @@ public class EditService {
 	    while (str.indexOf(" ") != -1) {  
 	        str = str.substring(0, str.indexOf(" ")) + "&nbsp"  
 	                + str.substring(str.indexOf(" ") + 1);  
-	    }  
+	    } 
+	    while (str.indexOf("\t") != -1) {
+	    	str = str.substring(0, str.indexOf("\t")) + "&nbsp&nbsp&nbsp"  
+	                + str.substring(str.indexOf("\t") + 1);
+	    }
 	    return str;  
 	}  
 	
