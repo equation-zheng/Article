@@ -29,7 +29,7 @@
 	<div class="content">
 		<div class="title">用户登录</div>
 		<div class="inputBox">
-			<input id="username" type="search" placeholder=" 请输入账号/邮箱/手机号" value="小明">
+			<input id="username" type="search" placeholder=" 请输入账号/邮箱/手机号" value="郑芳成">
 		</div>
 		<div class="inputBox">
 			<input id="password" type="password" placeholder=" 请输入密码" value="123456">

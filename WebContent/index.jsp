@@ -30,9 +30,8 @@
    String[]  img = {"1.jpg",
 		"2.jpg",
 		"3.jpg",
-		"1.png",
-		"morning.jpg",
-		"noon.jpg"};
+		"4.jpg",
+		"5.jpg"};
    pageContext.setAttribute("img", img);
    pageContext.setAttribute("imgButton", img);
 %>
