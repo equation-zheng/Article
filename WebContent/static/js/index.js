@@ -6,11 +6,11 @@ window.onload = function(){
         $(".btn").fadeOut();
     });
     var li = $("#box ul li");
-    //console.log($li);
+    console.log(li.length);
     var timer = setInterval(func,2000);
     var index = 0;
     function func(){
-        if(index < 7){
+        if(index < li.length){
             index++;
         }
         else{
@@ -43,13 +43,13 @@ window.onload = function(){
     $(".leftBtn").click(function(){
         index--;
         if(index < 0){
-            index = 7;
+            index = li.length;
         }
         change(index);
     });
     $(".rightBtn").click(function(){
         index++;
-        if(index > 7){
+        if(index > li.length){
             index = 0;
         }
         change(index);

@@ -24,55 +24,36 @@
 
 <%@include file="common/header.jsp" %>
 
+
+<%
+   //查询出连载部分的相关文章
+   String[]  img = {"1.jpg",
+		"2.jpg",
+		"3.jpg",
+		"1.png",
+		"morning.jpg",
+		"noon.jpg"};
+   pageContext.setAttribute("img", img);
+   pageContext.setAttribute("imgButton", img);
+%>
+
 <div class="banner">
 	<div id="box">
 		<i class="leftBtn"></i>
 		<i class="rightBtn"></i>
-		<ul>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/1.png" alt="5" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/2.png" alt="1" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/3.png" alt="2" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/4.png" alt="3" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/5.png" alt="4" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/1.png" alt="5" />
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)">
-					<img src="${basePath}/static/image/2.png" alt="1" />
-				</a>
-			</li>
+		<ul>	
+			<c:forEach items="${img}" var="img">
+				<li>
+					<a href="javascript:void(0)">
+						<img src="${basePath}/static/image/${img}" alt="${img}" />
+					</a>
+				</li>
+			</c:forEach>
 		</ul>
 		<div class="spiner">
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+			<c:forEach items="${imgButton}" var="imgButton">
+	            <p></p>
+	        </c:forEach>
         </div>
 	</div>
 </div>
@@ -172,20 +153,6 @@ body背景
 $("#bodyImg").css("background-image", "url(${basePath}/static/image/bodyBackground.jpg)");
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

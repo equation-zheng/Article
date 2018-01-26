@@ -60,7 +60,7 @@
     position: absolute;
     top: 160px;
     transform: rotate(45deg);
-    border-color: #fff;
+    border-color: #ccc;
     border-width: 5px;
     opacity: .2;
     padding: 15px;
@@ -106,6 +106,7 @@
     list-style: none;
     overflow:hidden;
     border-radius: 3px;
+    cursor: pointer;
 }
 .category .items .item div {
     text-align: center;
